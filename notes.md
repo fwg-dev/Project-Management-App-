@@ -1,1 +1,2 @@
-rails g resource User attribute:datatype 
+Models 
+// relationships are important when building your app 
