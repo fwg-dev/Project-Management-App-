@@ -1,0 +1,1 @@
+rails g resource User attribute:datatype 
