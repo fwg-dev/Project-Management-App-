@@ -1,0 +1,35 @@
+<h1>Create a new task</h1>
+<div>
+<%= form_for(@task) do |f|%>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+</div>
+
+<div>
+<%= f.label :schedule %>
+<%= f.text_field :schedule %>
+</div>
+
+<div>
+<%= f.label :completion_status %>
+<%= f.text_field :completion_status %>
+</div>
+<%= f.submit %>
+
+<p> Select a Project that already exists</p>
+<div> 
+<%= f.collection :project_id, Project.all, :id, %>
+</div>
+
+<p>Or create a new Project </p>
+<div>
+</div>
+
+<% end %>
+
+    t.string "description"
+    t.date "schedule"
+    t.string "completion_status"
+    t.integer "project_id"
+    t.integer "user_id"
