@@ -83,10 +83,10 @@ end
 -- it has a reader method 
 def project 
 end 
--- it has a tasks_id method 
+-- it has a project_id method 
 def project_id 
 end 
---- it has a task_id= method 
+--- it has a project_id= method 
 def project_id= 
 end 
 
