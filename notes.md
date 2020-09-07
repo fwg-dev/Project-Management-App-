@@ -91,3 +91,39 @@ def project_id=
 end 
 
 *******
+
+brands == project
+ice_cream == task
+
+Ice_cream model / Tasks
+ belongs_to :brand
+ belongs_to :user #creator of it
+
+
+ Brand model / Project
+
+  has_many :ice_creams
+  validates :name, presence: true, uniqueness: true
+
+Task Model 
+
+ belongs_to :user 
+  belongs_to :project 
+  accepts_nested_attributes_for :project
+
+Project model 
+
+  has_many :tasks
+  has_many :users, through: :tasks
+
+
+
+******
+
+<div>
+    <p><%= task.schedule %></p>
+  </div>
+
+  <div>
+    <p><%= task.completion_status %></p>
+  </div>
