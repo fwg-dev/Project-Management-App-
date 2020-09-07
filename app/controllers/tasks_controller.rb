@@ -16,6 +16,10 @@ class TasksController < ApplicationController
 
   end 
 
+  def index
+    @tasks = Task.all.includes(:project)
+  end
+
   private
 
   def task_params 
