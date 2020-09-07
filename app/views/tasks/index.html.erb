@@ -1,0 +1,17 @@
+<h1>All the Tasks</h1>
+
+<% @tasks.each do |task| %>
+
+  <h2><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </h2>
+   <% end %>
+  <div>
+    <p><%= task.schedule %></p>
+  </div>
+
+  <div>
+    <p><%= task.completion_status %></p>
+  </div>
+
+
+
+
