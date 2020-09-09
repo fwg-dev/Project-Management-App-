@@ -1,1 +1,22 @@
-<h1>This is your Task Show page</h1>
+
+<p>
+<strong>Description: </strong>
+<%= @task.description %></strong>
+</p>
+
+<p>
+<strong>Completion Status:</strong>
+<%= @task.completion_status%>
+</p>
+
+<p>
+<strong>Schedule: </strong>
+<%= @task.schedule%>
+</p>
+
+<h4>By: <%=link_to @task.user.username, user_path(@task.user)%> </h4>
+
+<%= link_to 'Back', tasks_path %>
+ 
+
+
