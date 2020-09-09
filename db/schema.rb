@@ -14,8 +14,11 @@ ActiveRecord::Schema.define(version: 2020_09_05_055337) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
+    t.boolean "completion_status"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_055337) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"
 end
