@@ -1,7 +1,27 @@
 <h1>All the Projects</h1>
 
-<ol>
-  <% @projects.each do |project| %>
-    <li><%= project.name%></li>
-  <% end %>
+<ul>
+<% @projects.each do |project| %>
+<ol type = "1">
+<li>
+  <p><strong>Name:</strong><%= link_to project.name, project_path(project.id)%> </p>
+  
+  <div>
+  <p><strong> Completion Status: </strong> <%= project.completion_status %></p>
+  </div>
+
+  <h4>By: <%=link_to project.user.username, user_path(project.user)%> </h4>
+
+  <%= link_to 'Show', project_path(project) %>
+</li>
 </ol>
+
+  <br>
+   <% end %>
+   
+
+
+
+
+
+
