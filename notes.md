@@ -119,11 +119,59 @@ Project model
 
 
 ******
+change 
+//  completion status to project status 
+// add project_name to the task project 
 
-<div>
-    <p><%= task.schedule %></p>
-  </div>
+add to layout 
 
-  <div>
-    <p><%= task.completion_status %></p>
-  </div>
+// <%= link_to "All Projects", projects_path %>
+// <%= link_to "All Tasks", tasks_path%>
+
+*****
+
+<a href="#projects" class="w3-bar-item w3-button">Projects</a>
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+
+********
+
+
+<h3>Category: <%= @post.category.try(:name)%></h3>
+<% if @post.user == current_user %>
+<h4><%= link_to "Edit Post", edit_post_path(@post)%></h4>
+<% end %>
+
+********
+
+//END of URL tells you which page it is going to 
+
+
+****** 
+
+if we wanted a localhost:3000/tasks/1/project/new 
+
+******
+
+nested Routes 
+
+options # new, show, or index 
+
+-- our nest routes urls are: 
+*will we eventually add users' nested routes? 
+'/users'
+'/users/:id/posts'
+'/users/:id/comments'
+'/posts'
+'/posts/:id/comments' 
+
+*********
+In our project/new.html form 
+
+Options for creating nested routes forms.. do we include task_id in the form? 
+Option1 = post to a nested route- we need task_id 
+Option 2 = include a hidden field - makes the create action cleaner. we can have one create action that is unnested
+
+*******
+
+
