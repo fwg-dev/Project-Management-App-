@@ -1,1 +1,19 @@
 <h1>This is your Project's show page </h1>
+
+<p>
+<strong>Name: </strong>
+<%= @project.name %></strong>
+</p>
+
+<p>
+<strong>Completion Status:</strong>
+<%= @project.completion_status%>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+
+ <%= link_to 'Delete', project_path(@project),method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+ <br>
+ <br>
+<%= link_to 'Back', projects_path %>
+ 
