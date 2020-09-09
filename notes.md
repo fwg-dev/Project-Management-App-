@@ -122,6 +122,7 @@ Project model
 change 
 //  completion status to project status 
 // add project_name to the task project 
+// collection drop down menu not populating properly 
 
 add to layout 
 
