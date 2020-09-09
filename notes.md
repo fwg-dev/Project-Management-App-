@@ -175,4 +175,14 @@ Option 2 = include a hidden field - makes the create action cleaner. we can have
 
 *******
 
+<%= link_to 'Edit', edit_project_path(@project) %> |
 
+ <%= link_to 'Delete', project_path(@project),method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
+ <br>
+ 
+ <br>
+<%= link_to 'Back', projects_path %>
+
+***********
+
+  accepts_nested_attributes_for :project
