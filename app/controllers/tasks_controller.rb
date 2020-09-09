@@ -1,4 +1,18 @@
 class TasksController < ApplicationController
+  def index
+    @tasks = Task.all 
+  #   @project = Project.find_by_id(params[:id])
+  #   @task = @project.build_task
+
+  #   # task belongs to a project 
+  #   # @tasks = Task.all.includes(:project)
+
+  end
+
+  def show
+    @task = Task.find_by_id(params[:id])
+   # redirect_to tasks_path if !@task
+  end
 
   def new
    # very simple code to create an empty task and send the user
@@ -34,24 +48,12 @@ class TasksController < ApplicationController
       render 'edit'
     end 
   end 
-  
-  def show
-     @task = Task.find_by_id(params[:id])
-    # redirect_to tasks_path if !@task
-  end
 
-  
-  def index
-
-    @tasks = Task.all 
-  #   @project = Project.find_by_id(params[:id])
-  #   @task = @project.build_task
-
-  #   # task belongs to a project 
-  #   # @tasks = Task.all.includes(:project)
-
-  end
-
+  def destroy 
+    @task = Task.find_by_id(params[:id])
+    @task.destroy
+    redirect_to tasks_path
+  end 
 
   private
 
