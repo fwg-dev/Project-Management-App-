@@ -1,6 +1,7 @@
 <h1>All the Tasks</h1>
 <ul>
 <% @tasks.each do |task| %>
+<ol type = "1">
 <li>
   <p><strong>Description:</strong><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </p>
   <p>
@@ -11,12 +12,15 @@
   <div>
   <p><strong> Completion Status: </strong> <%= task.completion_status %></p>
   </div>
-</li>
+
+  <h4>By: <%=link_to task.user.username, user_path(task.user)%> </h4>
 
   <%= link_to 'Show', task_path(task) %>
+</li>
+</ol>
 
   <br>
    <% end %>
    
-</ol>
+
 
