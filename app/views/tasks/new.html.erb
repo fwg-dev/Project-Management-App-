@@ -1,7 +1,7 @@
 <h1>Create a new task</h1>
-<div>
-<%= form_for(@task) do |f| %>
 
+<%= form_for(@task) do |f| %>
+<div>
 <%= f.label :description %>
 <%= f.text_field :description %>
 </div>
@@ -20,10 +20,10 @@
 <br>
 <p> Select a Project that already exists</p>
 <div> 
-<%= f.collection_select :project_id, Project.all, :id, :name %>
+<%= f.collection_select :project_id, Project.all, :id, :name, include_blank: 'Select One' %>
 </div>
 
-<p>Or create a new Project: </p>
+<p>Or create a <strong> new Project:</strong> </p>
 <div>
 <%= f.fields_for :project do |p|%>
 <%= p.label :name %>
@@ -31,7 +31,7 @@
 <% end %>
 <br>
 </div>
-
+<br>
 <%= f.submit %>
 <% end %>
 
