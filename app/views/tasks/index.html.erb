@@ -1,20 +1,22 @@
 <h1>All the Tasks</h1>
-
-
+<ul>
 <% @tasks.each do |task| %>
-  Description:
-  <h4><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </h4>
-
+<li>
+  <p><strong>Description:</strong><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </p>
   <p>
-     <h4><strong>Schedule:</strong>
-    <%= task.schedule %></h4>
+     <p><strong>Schedule:</strong>
+    <%= task.schedule %></p>
   </p>
 
   <div>
-  <h4> Completion Status: <%= task.completion_status %></h4>
+  <p><strong> Completion Status: </strong> <%= task.completion_status %></p>
   </div>
+</li>
 
+  <%= link_to 'Show', task_path(task) %>
+
+  <br>
    <% end %>
    
-
+</ol>
 
