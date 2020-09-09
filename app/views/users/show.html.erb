@@ -1,1 +1,7 @@
-<h1> Welcome <%= "#{@user.username}" %> ! Thanks for signing up!  </h1>
+<h1> Welcome <%= "#{@user.username}" %> !</h1>
+<h3>Here are the tasks created by <%=@user.username%>:</h3>
+<ul>
+  <% @user.tasks.each do |task|%>
+  <li> <%= link_to task.description, task_path(task)%> </li>
+  <% end %>
+</ul>
