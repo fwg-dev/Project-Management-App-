@@ -1,0 +1,36 @@
+<h1>Edit Task</h1>
+
+<%= form_for(@task) do |f| %>
+<div>
+<%= f.label :description %>
+<%= f.text_field :description %>
+</div>
+<br>
+<div>
+<%= f.label :schedule %>
+<%= f.date_field :schedule %>
+</div>
+<br>
+
+<div>
+<%= f.label :completion_status %>
+<%= f.text_field :completion_status %>
+</div>
+
+<br>
+<p> Select a Project that already exists</p>
+<div> 
+<%= f.collection_select :project_id, Project.all, :id, :name, include_blank: 'Select One' %>
+</div>
+
+<p>Or create a <strong> new Project:</strong> </p>
+<div>
+<%= f.fields_for :project do |p|%>
+<%= p.label :name %>
+<%= p.text_field :name %>
+<% end %>
+<br>
+</div>
+<br>
+<%= f.update %>
+<% end %>
