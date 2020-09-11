@@ -4,4 +4,8 @@ class Task < ApplicationRecord
 
 
   validates :description, presence: true
+  validates :schedule, presence: true
+  validates :completion_status, presence: true
+
+
 end
