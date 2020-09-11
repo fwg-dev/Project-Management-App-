@@ -129,6 +129,10 @@ add to layout
 // <%= link_to "All Projects", projects_path %>
 // <%= link_to "All Tasks", tasks_path%>
 
+change project 
+
+//change to checkbox instead of textfile 
+
 *****
 
 <a href="#projects" class="w3-bar-item w3-button">Projects</a>
@@ -186,3 +190,129 @@ Option 2 = include a hidden field - makes the create action cleaner. we can have
 ***********
 
   accepts_nested_attributes_for :project
+
+  ******
+  nest under the parent- 
+
+  **********
+
+  <h2>Add a task:</h2>
+<%= form_with(model: [ @project, @project.tasks.build ], local: true) do |form| %>
+</p>
+
+<%= form.label :description %>
+<%= form.text_field :name %>
+
+<%= form.label :schedule %>
+<%= form.text_field :schedule %>
+
+<%= form.label :completion_status %>
+<%= form.text_field :completion_status %>
+ 
+ <p>
+<%= form.submit %>
+</p>
+<% end %>
+<br>
+</div>
+<br>
+********** 
+Link to adding task form in the project show page 
+
+<h2>Add a task:</h2>
+<%= form_with(model: [ @project, @project.tasks.build ], local: true) do |form| %>
+</p>
+
+<%= form.label :description %>
+<%= form.text_field :name %>
+
+<%= form.label :schedule %>
+<%= form.date_field :schedule %>
+
+<%= form.label :completion_status %>
+<%= form.text_field :completion_status %>
+ 
+ <p>
+<%= form.submit %>
+</p>
+<% end %>
+</div>
+----- this is a link to the tasks within that project 
+
+<h2>Tasks</h2>
+<% @project.tasks.each do |task| %>
+  <p>
+    <strong>task:</strong>
+    <%= Task.description %>
+    <%= Task.schedule %>
+    <%= Task.completion_status %>
+    <h4>By: <%=link_to @task.user.username, user_path(@task.user)%> </h4>
+
+  </p>
+<% end %>
+
+
+***********
+
+if wanted to look at all tasks under one project 
+task belongs to project 
+
+--- we are creating a link to add a new task on the project's page 
+--- if we were to add a task on the localhost:3000/projects page 
+
+-----
+  resources :tasks
+  resources :projects do 
+    resources :tasks, only: [:new, :create, :index]
+  end
+
+  what will we see when we view this page? localhost:3000/projects/2/tasks 
+
+  // as opposed to the localhost:3000/tasks 
+
+  ---- the first one will show us the project_id 
+
+*********
+
+
+****
+
+<%= form_for(@task) do |f|%>
+  <% if params[:project_id] %>
+    <%= f.hidden_field :project_id %>
+  <% else %>
+    <div>
+      <%= f.label :project_id, "Select a Project" %>
+      <%= f.collection_select :project_id, Project.alpha, :id, :name, :completion_status, include_blank: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :schedule %>
+    <%= f.text_field :schedule %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :completion_status %>
+    <%= f.text_area :completion_status %>
+  </div>
+  <br>
+
+  <%= f.submit %>
+
+<% end %>
+ 
+
+ ******
+
+<% if @project %>
+  <h1>Tasks for <%= @project.name%> - <%= @project.completion_status%></h1>
+<% else %>
+  <h1>All the Tasks </h1>
+<% end %>
+
+*********
