@@ -315,4 +315,39 @@ task belongs to project
   <h1>All the Tasks </h1>
 <% end %>
 
-*********
+**************
+goals for vid 4: 
+
+--- Add display of error messages 
+-- Add custom validation to make sure there aren't repeats of projects 
+--- Display flavour and brand in collection select drop down for new review form 
+---- Scope methods for the following 
+ // order projects alphabetically 
+ //order projects by tasks 
+ // avg. rating for an ice cream**
+ // highest rated ice cream**
+ // lowest rated ice cream**
+ // top 3 ice cream **
+ // Top task**(person with the most tasks) || project with most tasks
+ -- Add helper methods for nested route logic 
+
+ some of my scopes for project--- 
+
+ // self.filter 
+ //self.search 
+ //category_attributes 
+ //too_many_projects 
+ //today_post.size 
+
+  some of my scopes for user---
+  //self.most_active
+  //self.create_by_google_ominauth 
+  //self.create_by_github_omniauth
+
+  some of application helper methods---
+
+  current_user 
+  logged_in 
+  redirect_if_not_logged_in 
+
+***************
