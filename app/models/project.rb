@@ -6,5 +6,14 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :tasks
  
   validates :name, presence: true, uniqueness: true
-  
+  validate :not_a_duplicate
+
+
+  def not_a_duplicate 
+    #if there is already a ptoject with that name && task throw an error
+    if Project_find_by(name:name, task_id:task_id)
+      errors.add(:name, "has already been added for that project")
+    end
+
+  end
 end
