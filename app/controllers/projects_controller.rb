@@ -1,7 +1,12 @@
 class ProjectsController < ApplicationController
-  
   def index
     @projects = Project.all 
+  end
+
+  def my_index
+
+    @projects = current_user.projects
+  
   end
 
   def show
@@ -13,7 +18,7 @@ class ProjectsController < ApplicationController
    # code to create an empty project and send the user
    # to the New view for it (new.html.erb), which will have a
    # form for creating the project
-    
+
    @project = Project.new
   end
 
@@ -31,6 +36,7 @@ class ProjectsController < ApplicationController
     end
 
   end 
+ 
 
   def update 
     @project = Project.find(params[:id])
