@@ -1,7 +1,10 @@
+
 <h1>All the Tasks</h1>
+
+
 <ul>
 <% @tasks.each do |task| %>
-<ol type = "1">
+<ol>
 <li>
   <p><strong>Description:</strong><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </p>
   <p>
