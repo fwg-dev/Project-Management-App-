@@ -57,18 +57,18 @@ class TasksController < ApplicationController
   end 
 
   def destroy 
-    @task = Task.find_by_id(params[:id])
-    redirect_if_not_allowed
+    @task = Task.find_by(params[:id])
+   #redirect_if_not_allowed
     @task.destroy
     redirect_to tasks_path
   end 
 
   private
-  def redirect_if_not_allowed
-    if @task.user != current_user
-    redirect_to '/'
-    end
-  end
+  # def redirect_if_not_allowed
+  #   if @task.user != current_user
+  #   redirect_to '/' 
+  #   end
+  # end
   def task_params 
     params.require(:task).permit(:description, :schedule, :completion_status, :project_id, project_attributes: [:name])
   end 
