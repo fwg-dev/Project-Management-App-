@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/errors' , locals: {object: @task}  %>
+
 <%= form_for(@task) do |f| %>
 <div>
 <%= f.label :description %>
@@ -32,5 +34,4 @@
 <br>
 <%= f.submit %>
 <% end %>
-
 
