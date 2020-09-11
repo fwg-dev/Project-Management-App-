@@ -133,6 +133,9 @@ change project
 
 //change to checkbox instead of textfile 
 
+deleting a project 
+//where do you redirect after deleting a task? 
+
 *****
 
 <a href="#projects" class="w3-bar-item w3-button">Projects</a>
