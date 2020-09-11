@@ -4,5 +4,7 @@ class Project < ApplicationRecord
   has_many :users, through: :tasks
 # the point of the line above this is to be able to call .users on a project instance, to list all users who have tasks for the project
   accepts_nested_attributes_for :tasks
-  validates :name, presence: true
+ 
+  validates :name, presence: true, uniqueness: true
+  
 end
