@@ -6,14 +6,29 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :tasks
  
   validates :name, presence: true, uniqueness: true
-  validate :not_a_duplicate
+  # validate :not_a_duplicate
 
 
-  def not_a_duplicate 
-    #if there is already a ptoject with that name && task throw an error
-    if Project_find_by(name:name, task_id:task_id)
-      errors.add(:name, "has already been added for that project")
-    end
+  # def not_a_duplicate 
+  #   #if there is already a ptoject with that name && task throw an error
+  #   if Project_find_by(name:name, task_id:task_id)
+  #     errors.add(:name, "has already been added for that project")
+  #   end
+  # end 
 
+  def name_and_username
+    "#{name} - #{user.username}"
   end
+
+  #order my projects alphabetically 
+  #by default it does ascending 
+  def self.alpha
+    order(:name)
+  end 
+  
+  scope :most_tasks, -> {left_joins(:tasks).group('projects.id').order('count(tasks.project_id) desc')}
+
+
+
+
 end
