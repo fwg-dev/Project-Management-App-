@@ -22,7 +22,10 @@
  <%= link_to 'Delete', task_path(@task),method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
  <br>
  <br>
-<%= link_to 'Back', tasks_path %>
+  <%= link_to 'Current Project', project_path%>
+ <br>
+ <br>
+ <%= link_to 'Back to all Tasks', tasks_path %>
  
 
 
