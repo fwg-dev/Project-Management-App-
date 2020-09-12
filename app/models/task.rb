@@ -15,8 +15,5 @@ class Task < ApplicationRecord
         errors.add(:schedule_date, "can't be in the past")
       end
     end
-
-   
-
-
+    
 end
