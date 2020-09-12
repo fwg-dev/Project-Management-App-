@@ -15,10 +15,6 @@ class ProjectsController < ApplicationController
   end
 
   def new
-   # code to create an empty project and send the user
-   # to the New view for it (new.html.erb), which will have a
-   # form for creating the project
-
    @project = Project.new
   end
 
