@@ -4,11 +4,11 @@ class TasksController < ApplicationController
     #is this a nested route? 
     if params[:project_id] && @project = Project.find_by_id(params[:project_id])
     #if nested
-    @tasks = @project.tasks
+    @tasks = @project.tasks.most_tasks
     #if so, we want only tasks of that brand 
     else 
     #if not,  show all tasks 
-    @tasks = Task.all 
+    @tasks = Task
 
     end
   end 
