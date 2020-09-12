@@ -324,8 +324,8 @@ goals for vid 4:
 --- Add display of error messages 
 -- Add custom validation to make sure there aren't repeats of projects 
 --- Display flavour and brand in collection select drop down for new review form 
----- Scope methods for the following 
- // order projects alphabetically 
+---- Scope methods for the following - typically called in the controller. 
+ // order projects alphabetically - done in the model 
  //order projects by tasks 
  // avg. rating for an ice cream**
  // highest rated ice cream**
@@ -354,3 +354,17 @@ goals for vid 4:
   redirect_if_not_logged_in 
 
 ***************
+
+grouping by user with most tasks 
+
+def tasks_by_project(project)
+    self.tasks.where({:project_id => project.id}).group('tasks.project_id').order('SUM(tasks.hours) ASC')
+end
+
+@user = User.find(1)
+@project = Project.find(232)
+
+# return a list of projects scoped by user_id andproject id, ordered by task hours
+@user.tasks_by_project(@project) 
+
+*********
