@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :projects, through: :tasks
 # the point of the line above this is to be able to call .projects on a user instance, to list all projects they have tasks for
 
-validates :username, uniqueness: true,  presence: true
+validate :username, uniqueness: true,  presence: true
 # validates :email, presence: true
 
   has_secure_password 
