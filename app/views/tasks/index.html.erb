@@ -4,7 +4,7 @@
 
 <ul>
 <% @tasks.each do |task| %>
-<ol>
+<ol start="1">
 <li>
   <p><strong>Description:</strong><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </p>
   <p>
