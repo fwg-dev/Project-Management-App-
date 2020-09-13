@@ -2,7 +2,7 @@
 
 <ul>
 <% @projects.each do |project| %>
-<ol type = "1">
+<ol>
 <li>
   <p><strong>Name:</strong><%= link_to project.name, project_path(project.id)%> </p>
   
