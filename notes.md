@@ -368,3 +368,66 @@ end
 @user.tasks_by_project(@project) 
 
 *********
+Omni auth 
+--gems 
+// 
+<%= button_to "Log in with Google", '/auth/google_oauth2' %>
+
+
+***********
+
+<%= render partial: 'errors' , locals: {object: @task}  %>
+
+<%= render 'layouts/errors' , locals: {object: @user}  %>
+
+************
+
+=> {"provider"=>"google_oauth2",
+ "uid"=>"117946779500694350659",
+ "info"=>
+  {"name"=>"Faith Gicheha",
+   "email"=>"fwgicheh@gmail.com",
+   "unverified_email"=>"fwgicheh@gmail.com",
+   "email_verified"=>true,
+   "first_name"=>"Faith",
+   "last_name"=>"Gicheha",
+
+
+   *************
+
+   def google
+  #find_or_create a user using the attributes auth
+  # @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+  #   user.username = auth["info"]["first_name"]
+  #   user.password = SecureRandom.hex(10)
+  # end
+  # if @user.save
+  @user =User.find_or_create_by_email(auth)
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
+    # binding.pry
+  # else
+  #   redirect_to '/'
+  # end
+end 
+
+*********
+
+  # def self.find_or_create_with_oauth(auth)
+  #   @user = User.find_or_create_by_email(auth["info"]["email"])
+  #   user.email = auth["info"]["email"]
+  #   user.uid = auth["uid"]
+  #   #  binding.pry
+  #   user.save
+  #   user
+  # end
+
+  def self.find_or_create_by_email(auth)
+    User.find_or_create_by(email: auth["info"]["email"]) do |u|
+      user.password = SecureRandom.hex(20)
+      user.username = auth["info"]["name"]
+      user.email = auth["info"]["email"]
+        user.save
+        user
+    end
+  end
