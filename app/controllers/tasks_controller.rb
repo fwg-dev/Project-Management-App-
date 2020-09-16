@@ -8,7 +8,7 @@ class TasksController < ApplicationController
     #if so, we want only tasks of that brand 
     else 
     #if not,  show all tasks 
-    @tasks = Task
+    @tasks = Task.all
 
     end
   end 
