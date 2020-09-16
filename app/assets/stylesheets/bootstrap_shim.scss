@@ -1,0 +1,80 @@
+$primary: hsl(182, 95%, 29%);
+@import "bootstrap";
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 580;
+  background-color: #f8eefd;
+  margin: 0;
+  color: rgb(10, 10, 10);
+  line-height: 1.6;
+}
+
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+  h1 { 
+    margin: 0;
+  }
+
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-center;
+  }
+
+  .project {
+    width: 30%;
+    min-width: 300px;
+  }
+
+  .tasks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-center;
+  }
+
+  .task {
+    width: 30%;
+    min-width: 300px;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: rgb(205, 196, 207);
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: rgb(24, 23, 23);
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .topnav a:hover {
+    background-color: rgb(245, 228, 244);
+    color: rgb(15, 11, 15);
+  }
+  
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+
+  
+ 
+  
+  
