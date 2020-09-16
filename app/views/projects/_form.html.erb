@@ -1,19 +1,19 @@
-<%= render partial: 'errors' , locals: {object: @project} %>
+<%= render partial: 'layouts/errors' , locals: {object: @project} %>
 
 <%= form_for(@project) do |f| %>
 
 <div>
 <%= f.label :Name %>
-<%= f.text_field :name %>
+<%= f.text_field :name, class: "form-control"%>
 </div>
 <br>
 
-<div>
-<%= f.label :Completed? %>
-<%= f.text_field :completion_status %>
+<div class="form-group">
+<%= f.label :Completion?%>
+<%= f.text_field :completion_status, class: "form-control" %>
 </div>
-
+<br>
 <p> 
-<%= f.submit %>
+<%= f.submit class: "btn btn-primary" %>
 </p>
 <% end %>
