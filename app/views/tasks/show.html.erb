@@ -1,11 +1,15 @@
 
+<div class "title-container">
+<h3>This is your Task's show page </h3>
+</div>
+<br>
 <p>
 <strong>Description: </strong>
 <%= @task.description %></strong>
 </p>
 
 <p>
-<strong>Completion Status:</strong>
+<strong>Completion Status: </strong>
 <%= @task.completion_status%>
 </p>
 
@@ -14,9 +18,9 @@
 <%= @task.schedule%>
 </p>
 
-<p><strong>Project Name:</strong><%= @task.project.name %> </p>
-<h4>By: <%=link_to @task.user.username, user_path(@task.user)%> </h4>
-
+<p><strong>Project Name: </strong><%= @task.project.name %> </p>
+<h5>By: <%=link_to @task.user.username, user_path(@task.user)%> </h5>
+<br>
  <%= link_to 'Edit', edit_task_path(@task) %> |
 
  <%= link_to 'Delete', task_path(@task),method: :delete, data: { confirm: 'Are you sure you want to delete?' } %>
@@ -25,7 +29,7 @@
   <%= link_to 'Current Project', project_path%>
  <br>
  <br>
- <%= link_to 'Back to all Tasks', tasks_path %>
+ <%= link_to 'Back to all Tasks', tasks_path, class: "btn btn-info" %>
  
 
 
