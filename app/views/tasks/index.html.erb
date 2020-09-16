@@ -1,29 +1,29 @@
+<div class="title-container">
+  <h1>All the Tasks</h1>
+</div>
 
-<h1>All the Tasks</h1>
-
-
+<div class="tasks">
 <ul>
+
 <% @tasks.each do |task| %>
-<ol start="1">
-<li>
-  <p><strong>Description:</strong><%= link_to task.description, task_path(task.id)%> - <%= task.project.name %> </p>
-  <p>
-     <p><strong>Schedule:</strong>
-    <%= task.schedule %></p>
-  </p>
+ <ol start="1">
+ <div class="task">
+ 
 
-  <div>
+  <p><strong>Description: </strong><%= link_to task.description, task_path(task.id)%></p>
+ 
+  <p><strong>Schedule: </strong><%= task.schedule %></p>
   <p><strong> Completion Status: </strong> <%= task.completion_status %></p>
-  </div>
-
-  <h4>By: <%=link_to task.user.username, user_path(task.user)%> </h4>
-
-  <%= link_to 'Show', task_path(task) %>
-</li>
-</ol>
-
+ <p><strong>By: </strong><%=link_to task.user.username, user_path(task.user)%> </p>
+ <p></p><strong> Project Name: </strong><u><%= task.project.name %></u></p>
+<br>
+  <%= link_to 'Show', task_path(task), class: "btn btn-info"  %>
+ 
+ </div>
+  </ol> 
   <br>
    <% end %>
+  
    
 
 
