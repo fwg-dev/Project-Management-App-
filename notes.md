@@ -431,3 +431,115 @@ end
         user
     end
   end
+
+
+  *******
+
+  <%= render 'layouts/errors' , locals: {object: @user}  %>---from users 
+
+
+  <%= render 'layouts/errors' , locals: {object: @project}  %>--- from projects 
+
+
+  <%= render 'layouts/errors' , locals: {object: @task}  %>----- from tasks
+
+   <%= link_to "Log Out", logout_path, method: :delete %> 
+  <%= link_to "Add a Project", new_project_path %>
+  <%= link_to "Add a Task", new_task_path %>
+  <%= link_to "All Projects", projects_path %>
+  <%= link_to "All Tasks", tasks_path %>
+
+
+  *************************
+personal_projects page cotnroller 
+
+  def index
+  	if user_signed_in?
+  		@teams = Team.where('id = ?', current_user.team_id)
+  		@projects = Project.where( current_user.team_id)
+  	end
+
+  	@activities = PublicActivity::Activity.order("created_at DESC").where(owner_id: current_user, owner_type: "User")
+  end
+
+
+personal_project views 
+
+********************
+<p>
+<%= link_to "Login", login_path %>
+OR
+<%= link_to "Signup", signup_path %>
+OR 
+<%= link_to "Sign in with Google", '/auth/google_oauth2', method: :post %>
+</p>
+
+********
+button class
+class: "btn btn-primary" 
+**********
+
+flash messages from new/edit forms 
+
+<p><% if flash[:message]%>
+  <h4 style="color:green;"><%= flash[:message] %> </h4>
+  <%end%>
+
+  <p><% if flash[:message]%>
+  <h4 style="color:green;"><%= flash[:message] %> </h4>
+  <%end%>
+
+******
+
+
+  <header class="container">
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header"> 
+      
+    </div>
+    <ul class="nav navbar-right">
+    
+    </ul>
+    </div> 
+    </nav>
+   </header>
+
+
+   **********
+   background image: 
+
+   <div style="background-image: url('https://i.pinimg.com/736x/fc/4c/23/fc4c23b07c86024e753d530b03fbedec.jpg');">
+ 
+   </div>
+
+    <div style="background-color:lightblue;"></div>
+
+    **********
+
+    <% if flash[:error]%>
+    <h4 style="color:red;"><%= flash[:error] %> </h4>
+    <%end%> from signup page
+
+    ******
+
+    .login{
+    font-size: 15px;
+     white-space: nowrap; 
+     top: 0px;
+      width: 100%;
+       background: rgb(255, 254, 252); 
+       display: flex;
+        flex-direction: column; 
+        align-items: center;
+         justify-content: center;
+  }
+
+
+  **********
+  <p>Here are the projects created by <%=@user.username%></p>
+  <ol type =1 >
+  <% @user.projects.each do |project|%>
+  <li> <%= link_to project.name, my_projects_path%> </li>
+  <% end %>
+  </ol>
