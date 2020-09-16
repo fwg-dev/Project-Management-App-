@@ -1,20 +1,30 @@
-<h1>Sign up!</h1>
+<%= render partial: 'layouts/errors' , locals: {object: @user} %>
 
-
+<div class "title-container">
+<h1>Sign up</h1>
+</div>
+<p>Please fill in this form to create an account.</p>
 
 <%= form_for(@user) do |f|%>
 
+<div class="field">
 <%= f.label :username %>
-<%= f.text_field :username %>
+<%= f.text_field :username%>
+</div>
 
+<div class="field">
 <%= f.label :email %>
 <%= f.email_field :email %>
+</div>
 
+<div class="field">
 <%= f.label :password %>
 <%= f.password_field :password %>
+</div>
 
+<div class="actions">
 <%= f.submit "Sign Up" %>
-
+</div>
 <% end %>
 
-<%= link_to "Sign up with Google", '/auth/google_oauth2', method: :post %>
+</div>
