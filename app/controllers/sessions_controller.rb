@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  
   def welcome 
   end
 
@@ -11,14 +11,12 @@ class SessionsController < ApplicationController
   def new 
     #create a new user instance? 
   end
-
-  def create 
-
-        #Try to find user in our system- find user by email
+  
+   def create 
+          # byebug
       @user = User.find_by(username: params[:user][:username])
-      #did we find someone? & did they put in the right passowrd? 
-      if @user.try(:authenticate, params[:user][:password])
-   #if @user && @user.authenticate(password:params[:user][:password])
+      #if @user.try(:authenticate, params[:user][:password])
+      if @user && @user.authenticate(params[:user][:password])
         #actually log the user in 
         session[:user_id] = @user.id
         #then render user profile(user's profile page)
@@ -30,20 +28,20 @@ class SessionsController < ApplicationController
         redirect_to login_path
         
       end
-    #  end
-end 
+   end 
 
- def google 
-  @u= User.find_or_create_with_oauth(auth)
-  session[:user_id] = @u.id
-   #binding.pry
-  redirect_to user_path(@u)
-
- end
+  def google 
+    @user= User.find_or_create_with_oauth(auth)
+    session[:user_id] = @user.id
+    #binding.pry
+    redirect_to user_path(@user)
+  end
  
- private 
+  private 
 
- def auth
-   request.env['omniauth.auth']
- end
+  def auth
+    request.env['omniauth.auth']
+  end
+
+ 
 end
