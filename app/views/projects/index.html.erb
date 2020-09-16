@@ -1,18 +1,24 @@
-<h1>All the Projects</h1>
+<div class="title-container">
+  <h1>All the Projects</h1>
+</div>
 
-<ul>
-<% @projects.each do |project| %>
-<ol>
-<li>
-  <p><strong>Name:</strong><%= link_to project.name, project_path(project.id)%> </p>
+<div class="projects">
+  <% @projects.each do |project| %>
+  <div class="project">
+  <p><strong>Name: </strong><%= link_to project.name, project_path(project.id)%> </p>
   
-  <div>
-  <p><strong> Completion Status: </strong> <%= project.completion_status %></p>
-  </div>
+<div>
+<p><strong> Completion Status: </strong> <%= project.completion_status %></p>
+</div>
 
-  <h4>By: <%=link_to project.user.username, user_path(project.user)%> </h4>
+<div>
+  <p><strong>By: </strong><%=link_to project.user.username, user_path(project.user) %> </></p>
+</div>
 
-  <%= link_to 'Show', project_path(project) %>
+<div>
+  <%= link_to 'Show', project_path(project), class: "btn btn-info" %>
+</div>
+
 </li>
 </ol>
 
