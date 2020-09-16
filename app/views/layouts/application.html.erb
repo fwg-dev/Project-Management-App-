@@ -9,18 +9,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+   <body 
+ 
+  <div><%= render_nav_bar %></div>
 
-  <div>
-  <%= link_to "Log Out", logout_path, method: :delete %> 
-  <%= link_to "Add a Project", new_project_path %>
-  <%= link_to "Add a Task", new_task_path %>
-  <%= link_to "All Projects", projects_path %>
-  <%= link_to "All Tasks", tasks_path %>
-  
-      
-  </div>
-
-  <body>
+  <section class="container"> 
+    <div id="flash">
+    <% flash.each do |key, value| %> 
+      <div class="flash alert <%= alert_class(key) %>"><%= value %></div>
+    <% end %>
+    </div>
+  </section>
+    
+  <div class='container'>
     <%= yield %>
+    </div>
   </body>
 </html>
